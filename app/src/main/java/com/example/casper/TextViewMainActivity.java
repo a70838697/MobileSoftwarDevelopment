@@ -12,7 +12,7 @@ public class TextViewMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.text_view_activity_main);
+        setContentView(R.layout.activity_text_view_main);
 
         textViewHelloWorld=findViewById(R.id.textViewHelloWorld);
         textViewHelloWorld.setText("你好，编程实现的Hello world!");

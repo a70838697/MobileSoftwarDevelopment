@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">移动软件开发</string>
-    <string name="hello_world">你好世界</string>
-    <string name="hello_world2">你好2人世界</string>
+    <string name="hello_world">Hello World</string>
+    <string name="hello_world2">你好世界!</string>
 </resources>
