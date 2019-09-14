@@ -20,7 +20,6 @@ public class ListViewMainActivity extends AppCompatActivity {
 
     private List<Book> listBooks = new ArrayList<>();
     ListView listViewBooks;
-    String[] bookNames = {"Android开发", "xin", "创新工程实践"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,7 @@ public class ListViewMainActivity extends AppCompatActivity {
 
         private int resourceId;
 
-        public BookAdapter(Context context, int resource, List<Book> objects) {
+        BookAdapter(Context context, int resource, List<Book> objects) {
             super(context, resource, objects);
             resourceId = resource;
         }
