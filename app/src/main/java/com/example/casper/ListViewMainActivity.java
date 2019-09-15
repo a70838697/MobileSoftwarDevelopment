@@ -33,9 +33,6 @@ public class ListViewMainActivity extends AppCompatActivity {
         listViewBooks.setAdapter(adapter);
     }
 
-    /**
-     * 初始化数据
-     */
     private void init() {
         getListBooks().add(new Book("软件项目管理案例教程（第4版）", R.drawable.book_2));
         getListBooks().add(new Book("创新工程实践", R.drawable.book_no_name));
