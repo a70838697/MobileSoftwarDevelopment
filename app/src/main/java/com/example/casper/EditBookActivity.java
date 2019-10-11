@@ -33,6 +33,7 @@ public class EditBookActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.putExtra("title", editTextBookTitle.getText().toString());
+                intent.putExtra("insert_position", insertPosition);
                 intent.putExtra("price", Double.parseDouble(editTextBookPrice.getText().toString()));
                 setResult(RESULT_OK, intent);
                 EditBookActivity.this.finish();
