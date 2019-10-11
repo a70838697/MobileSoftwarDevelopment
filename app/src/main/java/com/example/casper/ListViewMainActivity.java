@@ -1,6 +1,9 @@
 package com.example.casper;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -23,8 +26,8 @@ import java.util.List;
 public class ListViewMainActivity extends AppCompatActivity {
 
     public static final int CONTEXT_MENU_DELETE = 1;
-    public static final int CONTEXT_MENU_ADDNEW = 2;
-    public static final int CONTEXT_MENU_ABOUT = 3;
+    public static final int CONTEXT_MENU_NEW = CONTEXT_MENU_DELETE + 1;
+    public static final int CONTEXT_MENU_ABOUT = CONTEXT_MENU_NEW + 1;
     private List<Book> listBooks = new ArrayList<>();
     ListView listViewBooks;
     BookAdapter bookAdapter;
@@ -53,7 +56,7 @@ public class ListViewMainActivity extends AppCompatActivity {
             menu.setHeaderTitle(listBooks.get(info.position).getTitle());
             //设置内容 参数1为分组，参数2对应条目的id，参数3是指排列顺序，默认排列即可
             menu.add(0, CONTEXT_MENU_DELETE, 0, "删除");
-            menu.add(0, CONTEXT_MENU_ADDNEW, 0, "添加");
+            menu.add(0, CONTEXT_MENU_NEW, 0, "添加");
             menu.add(0, CONTEXT_MENU_ABOUT, 0, "关于...");
         }
     }
@@ -62,14 +65,27 @@ public class ListViewMainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case CONTEXT_MENU_DELETE:
-                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                listBooks.remove(info.position);
-
-                bookAdapter.notifyDataSetChanged();
-                Toast.makeText(ListViewMainActivity.this, "删除成功", Toast.LENGTH_LONG).show();
+                final int removePosition = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
+                Dialog dialog = new AlertDialog.Builder(this)
+                        .setTitle("删除图书？")
+                        .setMessage("您确定要删除这条图书吗？")
+                        .setIcon(R.drawable.ic_launcher_foreground)
+                        .setPositiveButton("删除", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                listBooks.remove(removePosition);
+                                bookAdapter.notifyDataSetChanged();
+                                Toast.makeText(ListViewMainActivity.this, "删除成功", Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        }).create();
+                dialog.show();
                 break;
-            case CONTEXT_MENU_ADDNEW:
-                getListBooks().add(new Book("无名书籍", R.drawable.book_no_name));
+            case CONTEXT_MENU_NEW:
+                final int insertPosition = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
+                getListBooks().add(insertPosition, new Book("无名书籍", R.drawable.book_no_name));
                 bookAdapter.notifyDataSetChanged();
                 break;
             case CONTEXT_MENU_ABOUT:
