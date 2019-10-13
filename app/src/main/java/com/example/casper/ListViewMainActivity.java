@@ -22,6 +22,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.casper.data.BookSaver;
+import com.example.casper.data.model.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,14 +39,24 @@ public class ListViewMainActivity extends AppCompatActivity {
 
     private List<Book> listBooks = new ArrayList<>();
     ListView listViewBooks;
+    BookSaver bookSaver;
     BookAdapter bookAdapter;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bookSaver.save();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view_main);
 
-        init();
+        bookSaver = new BookSaver(this);
+        listBooks = bookSaver.load();
+        if (listBooks.size() == 0)
+            init();
         listViewBooks = this.findViewById(R.id.list_view_books);
 
         bookAdapter = new BookAdapter(ListViewMainActivity.this, R.layout.list_view_item_book, getListBooks());

@@ -1,6 +1,8 @@
-package com.example.casper;
+package com.example.casper.data.model;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     private String title;
 
     private double price;
