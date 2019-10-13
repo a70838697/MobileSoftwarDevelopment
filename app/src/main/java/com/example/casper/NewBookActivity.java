@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EditBookActivity extends AppCompatActivity {
+public class NewBookActivity extends AppCompatActivity {
 
     private Button buttonOK, buttonCancel;
     private EditText editTextBookTitle, editTextBookPrice;
@@ -36,13 +36,13 @@ public class EditBookActivity extends AppCompatActivity {
                 intent.putExtra("insert_position", insertPosition);
                 intent.putExtra("price", Double.parseDouble(editTextBookPrice.getText().toString()));
                 setResult(RESULT_OK, intent);
-                EditBookActivity.this.finish();
+                NewBookActivity.this.finish();
             }
         });
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditBookActivity.this.finish();
+                NewBookActivity.this.finish();
             }
         });
 

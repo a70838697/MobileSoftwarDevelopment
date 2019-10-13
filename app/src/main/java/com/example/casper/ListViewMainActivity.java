@@ -117,7 +117,7 @@ public class ListViewMainActivity extends AppCompatActivity {
                 dialog.show();
                 break;
             case CONTEXT_MENU_NEW:
-                Intent intent = new Intent(this, EditBookActivity.class);
+                Intent intent = new Intent(this, NewBookActivity.class);
                 intent.putExtra("title", "无名书籍");
                 intent.putExtra("price", 1);
                 intent.putExtra("insert_position", ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position);
@@ -125,7 +125,7 @@ public class ListViewMainActivity extends AppCompatActivity {
                 break;
             case CONTEXT_MENU_UPDATE: {
                 int position = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
-                Intent intent2 = new Intent(this, EditBookActivity.class);
+                Intent intent2 = new Intent(this, NewBookActivity.class);
                 intent2.putExtra("title", listBooks.get(position).getTitle());
                 intent2.putExtra("price", listBooks.get(position).getPrice());
                 intent2.putExtra("insert_position", position);
