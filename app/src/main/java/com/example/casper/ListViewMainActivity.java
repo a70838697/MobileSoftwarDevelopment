@@ -21,9 +21,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.casper.data.BookFragmentAdapter;
 import com.example.casper.data.BookSaver;
 import com.example.casper.data.model.Book;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,12 +61,24 @@ public class ListViewMainActivity extends AppCompatActivity {
         listBooks = bookSaver.load();
         if (listBooks.size() == 0)
             init();
-        listViewBooks = this.findViewById(R.id.list_view_books);
-
         bookAdapter = new BookAdapter(ListViewMainActivity.this, R.layout.list_view_item_book, getListBooks());
-        listViewBooks.setAdapter(bookAdapter);
 
-        this.registerForContextMenu(listViewBooks);
+        BookFragmentAdapter myPageAdapter = new BookFragmentAdapter(getSupportFragmentManager());
+
+        ArrayList<Fragment> datas = new ArrayList<Fragment>();
+        BookListFragment bookListFragment = new BookListFragment(bookAdapter);
+        datas.add(new BookListFragment(bookAdapter));
+        myPageAdapter.setData(datas);
+
+        ArrayList<String> titles = new ArrayList<String>();
+        titles.add("A");
+        myPageAdapter.setTitles(titles);
+
+        TabLayout tabLayout = findViewById(R.id.tablayout);
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(myPageAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 
     @Override
