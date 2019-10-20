@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +41,6 @@ public class ListViewMainActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_UPDATE_BOOK = 902;
 
     private List<Book> listBooks = new ArrayList<>();
-    ListView listViewBooks;
     BookSaver bookSaver;
     BookAdapter bookAdapter;
 
@@ -84,7 +82,7 @@ public class ListViewMainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        if (v == listViewBooks) {
+        if (v == findViewById(R.id.list_view_books)) {
             //获取适配器
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
             //设置标题
