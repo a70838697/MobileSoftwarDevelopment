@@ -145,5 +145,11 @@ public class ListViewMainActivityTest {
                                         1),
                                 1),
                         isDisplayed()));
+        mActivityTestRule.finishActivity();
+        try {
+            Thread.sleep(700);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
