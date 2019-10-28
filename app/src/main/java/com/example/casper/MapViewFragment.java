@@ -81,7 +81,7 @@ public class MapViewFragment extends Fragment {
                 drawShops(shopLoader.getShops());
             }
         };
-        shopLoader.load(handler, "http://www.jiaozuoye.com/joj/backup/my.json");
+        shopLoader.load(handler, "http://file.nidama.net/class/mobile_develop/data/bookstore.json");
         return view;
     }
 

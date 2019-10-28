@@ -31,7 +31,7 @@ public class ShopLoaderTest {
 
     @Test
     public void download() {
-        String content = shopLoader.download("http://www.jiaozuoye.com/joj/backup/my.json");
+        String content = shopLoader.download("http://file.nidama.net/class/mobile_develop/data/bookstore.json");
         assertEquals(364, content.length());
         assertTrue(content.contains("\"longitude\": \"113.526421\","));
     }
