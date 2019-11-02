@@ -54,7 +54,7 @@ public class BookSaverTest {
             Book bookThat = bookSaverLoader.getBooks().get(i);
             Assert.assertEquals(bookThat.getCoverResourceId(), bookThis.getCoverResourceId());
             Assert.assertEquals(bookThat.getTitle(), bookThis.getTitle());
-            Assert.assertTrue(Math.abs(bookThat.getPrice() - bookThis.getPrice()) < 1e-4);
+            Assert.assertEquals(bookThat.getPrice(), bookThis.getPrice(), 1e-4);
         }
     }
 

@@ -58,7 +58,7 @@ public class ShopLoaderTest {
         Shop shop = shopLoader.getShops().get(1);
         assertEquals("明珠商业广场", shop.getName());
         assertEquals("珠海二城广场", shop.getMemo());
-        assertTrue(Math.abs(22.251953 - shop.getLatitude()) < 1e-6);
-        assertTrue(Math.abs(113.526421 - shop.getLongitude()) < 1e-6);
+        assertEquals(22.251953, shop.getLatitude(), 1e-6);
+        assertEquals(113.526421, shop.getLongitude(), 1e-6);
     }
 }
