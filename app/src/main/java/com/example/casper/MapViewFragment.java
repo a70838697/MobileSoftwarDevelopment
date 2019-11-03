@@ -17,11 +17,11 @@ import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.TextOptions;
+import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.example.casper.data.ShopLoader;
 import com.example.casper.data.model.Shop;
@@ -35,7 +35,7 @@ import java.util.ArrayList;
 public class MapViewFragment extends Fragment {
 
 
-    private MapView mapView = null;
+    private TextureMapView mapView = null;
 
     public MapViewFragment() {
         // Required empty public constructor
