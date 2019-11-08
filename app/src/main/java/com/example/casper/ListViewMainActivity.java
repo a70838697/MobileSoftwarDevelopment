@@ -27,6 +27,7 @@ import com.example.casper.data.BookFragmentAdapter;
 import com.example.casper.data.BookSaver;
 import com.example.casper.data.model.Book;
 import com.google.android.material.tabs.TabLayout;
+import com.yzq.zxinglibrary.common.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,6 +105,12 @@ public class ListViewMainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
+            case BookListFragment.REQUEST_CODE_SCAN:
+                if (resultCode == RESULT_OK && data != null) {
+
+                    String content = data.getStringExtra(Constant.CODED_CONTENT);
+                    Toast.makeText(getBaseContext(), "扫描结果为：" + content, Toast.LENGTH_SHORT);
+                }
             case REQUEST_CODE_NEW_BOOK:
                 if (resultCode == RESULT_OK) {
                     String title = data.getStringExtra("title");
